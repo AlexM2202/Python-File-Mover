@@ -1,5 +1,5 @@
 #Alex Marquardt with help from Grand Duchars
-
+#This should just gather the ssh info and try to connnect
 #inports
 import paramiko
 import os
