@@ -1,6 +1,9 @@
 #!/bash/bin
 sudo apt install pip -y
-sudo pip install paramiko -y
+echo "pip installed!"
 
-echo "install complete"
+sudo pip install paramiko -y
+echo "paramiko installed!"
+
+echo "Alex's file mover install complete!"
 sudo rm install.sh
