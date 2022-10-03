@@ -36,6 +36,7 @@ for dir in os.listdir():
     if os.path.isdir(dir):
         dirs.append(dir)
 
+# Loop for transfering content using "dirs"
 for dir in dirs:
     currentDir = src + "/" + dir
     print(currentDir)
@@ -43,6 +44,7 @@ for dir in dirs:
     ftp_client.mkdir(dir)
     for file in os.listdir(currentDir):
         
+        # Moving the content
         print(dest + "/" + dir)
         print(file)
         # print(currentDir)
