@@ -2,7 +2,7 @@
 sudo apt install pip -y
 echo "pip installed!"
 
-sudo pip install paramiko -y
+sudo pip install paramiko
 echo "paramiko installed!"
 
 echo "Alex's file mover install complete!"
