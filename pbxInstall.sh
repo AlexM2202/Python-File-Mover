@@ -14,6 +14,9 @@ echo "pip installed!"
 pip3.6 install paramiko
 echo "paramiko installed!"
 
+pip3.6 install tqdm
+echo "tqdm installed!"
+
 yum -y install python36u-devel
 
 echo "Alex's file mover install complete!"
