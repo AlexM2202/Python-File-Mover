@@ -11,7 +11,7 @@ ln -s /usr.local/bin/python3.6 /usr/local/bin/python3
 yum install python36u-pip
 echo "pip installed!"
 
-pip install --upgrade pip
+pip3.6 install --upgrade pip
 echo "pip updated!"
 
 pip3.6 install paramiko
