@@ -20,5 +20,8 @@ echo "tqdm installed!"
 yum -y install python36u-devel
 
 echo "Alex's file mover install complete!"
+rm -R file
+rm -R file2
+rm -R plzMove
 rm pbxInstall.sh
 rm install.sh
