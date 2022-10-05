@@ -5,11 +5,8 @@ GREEN = "\033[31m"
 
 yum -y update
 yum -y install yum-utils
-yum -y groupinstall development
-yum -y install https://centos7.iuscommunity.org/ius-release.rpm
-yum -y install python36u
 
-ln -s /usr.local/bin/python3.6 /usr/local/bin/python3
+ln -s /usr/local/bin/python /usr/local/bin/python3.6
 
 yum install python36u-pip
 echo $GREEN "pip installed!" $NORMAL
