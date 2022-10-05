@@ -33,7 +33,7 @@ ftp_client.chdir(dest)
 print (GREENTXT + "start!" + RESETTXT)
 # Loop for detecting and moving files
 for dir in os.listdir():
-    if dir == "mover.py" or dir == ".git" or dir == "generator.py":
+    if dir == "mover.py" or dir == ".git" or dir == "generator.py" or dir == "README.md":
         continue
     if os.path.isdir(dir):
         dirs.append(dir)
