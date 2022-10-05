@@ -23,8 +23,6 @@ echo $GREEN "tqdm installed!" $NORMAL
 yum -y install python36u-devel
 
 echo $Green "Alex's file mover install complete!" $NORMAL
-rm -R file
-rm -R file2
-rm -R plzMove
+
 rm pbxInstall.sh
 rm install.sh
