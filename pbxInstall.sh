@@ -6,7 +6,7 @@ GREEN = "\033[31m"
 yum -y update
 yum -y install yum-utils
 
-ln -s /usr/bin/python /usr/bin/python3.6
+ln -s /usr/bin/python3.6 /usr/bin/python3
 
 yum install python36u-pip
 echo $GREEN "pip installed!" $NORMAL
