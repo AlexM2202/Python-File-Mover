@@ -1,5 +1,8 @@
 #!/bash/bin
 
+NORMAL = "\033[0;39m"
+GREEN = "\033[31m"
+
 yum -y update
 yum -y install yum-utils
 yum -y groupinstall development
@@ -9,20 +12,20 @@ yum -y install python36u
 ln -s /usr.local/bin/python3.6 /usr/local/bin/python3
 
 yum install python36u-pip
-echo "pip installed!"
+echo $GREEN "pip installed!" $NORMAL
 
 pip3.6 install --upgrade pip
-echo "pip updated!"
+echo $GREEN "pip updated!" $NORMAL
 
 pip3.6 install paramiko
-echo "paramiko installed!"
+echo $GREEN "paramiko installed!" $NORMAL
 
 pip3.6 install tqdm
-echo "tqdm installed!"
+echo $GREEN "tqdm installed!" $NORMAL
 
 yum -y install python36u-devel
 
-echo "Alex's file mover install complete!"
+echo $Green "Alex's file mover install complete!" $NORMAL
 rm -R file
 rm -R file2
 rm -R plzMove
