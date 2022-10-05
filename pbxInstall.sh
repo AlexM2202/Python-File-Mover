@@ -24,5 +24,6 @@ yum -y install python36u-devel
 
 echo $Green "Alex's file mover install complete!" $NORMAL
 
+rm README.md
 rm pbxInstall.sh
 rm install.sh
