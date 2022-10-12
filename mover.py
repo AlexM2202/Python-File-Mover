@@ -49,11 +49,10 @@ for dir in tqdm(dirs):
         # print(dest + "/" + dir)
         # print(file)
         # print(currentDir)
-        # ftp_client.chdir(currentDir)
         # print(YELLOWTXT + currentDir + "/" + file + RESETTXT + " --> " + BLUETXT + dest + "/" + dir + "/"+ file + RESETTXT)
-        # print(GREENTXT + "Done!" + RESETTXT)
         ftp_client.put(currentDir + "/" + file, dest + "/" + dir + "/" + file)
-        shutil.rmtree(currentDir)
+    shutil.rmtree(currentDir)
+        
         
 # Closing ftp and ssh
 ftp_client.close()
