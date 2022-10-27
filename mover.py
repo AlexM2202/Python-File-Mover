@@ -3,11 +3,10 @@
 # imports
 import paramiko
 import os
-import shutil
 import getpass
-from tqdm import tqdm
-
-dirs = []
+import logging
+from pathlib import Path
+# from tqdm import tqdm
 
 # Console text formatting
 YELLOWTXT = '\033[33m'
@@ -20,6 +19,13 @@ address = input(YELLOWTXT + "Please input the server url:" + RESETTXT)
 user = input(YELLOWTXT + "Please input the username:" + RESETTXT)
 secret = getpass.getpass(YELLOWTXT + "Please input the password:" + RESETTXT)
 
+#setting up log file
+log = Path()
+log = log.resolve()
+log = str(log) + "/log.txt"
+fp = open(log, 'a')
+logging.basicConfig(filename=log, level=logging.DEBUG, format= "%(asctime)s %(message)s", filemode='a')
+
 # Accessing ssh
 ssh_client = paramiko.SSHClient()
 ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -27,33 +33,33 @@ ssh_client.connect(address, username=user, password=secret)
 ftp_client = ssh_client.open_sftp()
 
 # Gathering path and destionation
-src = os.fspath(os.getcwd())
+src = input(YELLOWTXT + "Where is the Source:" + RESETTXT)
 dest = input(YELLOWTXT + "Where is this going to:" + RESETTXT)
+
 ftp_client.chdir(dest)
+
 print (GREENTXT + "start!" + RESETTXT)
-# Loop for detecting and moving files
-for dir in os.listdir():
-    if dir == "mover.py" or dir == ".git" or dir == "generator.py" or dir == "README.md":
+
+p = Path(src)
+for year in p.iterdir():
+    if (year.is_dir() == False):
         continue
-    if os.path.isdir(dir):
-        dirs.append(dir)
-
-size = len(dir)
-
-for dir in tqdm(dirs):
-    currentDir = src + "/" + dir
-    # print(currentDir)
-    os.chdir(currentDir)
-    ftp_client.mkdir(dir)
-    for file in os.listdir(currentDir):
-        # print(dest + "/" + dir)
-        # print(file)
-        # print(currentDir)
-        # print(YELLOWTXT + currentDir + "/" + file + RESETTXT + " --> " + BLUETXT + dest + "/" + dir + "/"+ file + RESETTXT)
-        ftp_client.put(currentDir + "/" + file, dest + "/" + dir + "/" + file)
-    shutil.rmtree(currentDir)
-        
-        
+    ftp_client.mkdir(year.name)
+    for month in year.iterdir():
+        ftp_client.mkdir(year.name + "/" + month.name)
+        for day in month.iterdir():
+            ftp_client.mkdir(year.name +"/" + month.name + "/" + day.name)
+            for file in day.iterdir():
+                ftp_client.put(str(day) + "/" + file.name, dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
+                logging.info(str(day) + "/" + file.name + " --> " + dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
+                os.remove(file)
+            day.rmdir()
+        month.rmdir()
+    year.rmdir()
+            
 # Closing ftp and ssh
+
 ftp_client.close()
 ssh_client.close()
+fp.write("\n Done! \n\n")
+fp.close()
