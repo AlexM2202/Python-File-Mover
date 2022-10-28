@@ -40,6 +40,7 @@ ftp_client.chdir(dest)
 
 print (GREENTXT + "start!" + RESETTXT)
 
+counter = 0
 p = Path(src)
 for year in p.iterdir():
     if (year.is_dir() == False):
@@ -62,11 +63,13 @@ for year in p.iterdir():
                 print(BLUETXT + str(file) + RESETTXT)
                 ftp_client.put(str(day) + "/" + file.name, dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
                 logging.info(str(day) + "/" + file.name + " --> " + dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
-            os.remove(file)
-        day.rmdir()
-    month.rmdir()
-year.rmdir()
+                counter = counter + 1
+#             os.remove(file)
+#         day.rmdir()
+#     month.rmdir()
+# year.rmdir()
 
+print (str(counter) + " files were moved.")
 print(GREENTXT + "Done!" + RESETTXT)
   
 # Closing ftp and ssh

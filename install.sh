@@ -9,8 +9,9 @@ echo "paramiko installed!"
 sudo pip install tqdm
 echo "tqdm installed!"
 
+touch log.txt
+
 echo "Alex's file mover setup complete!"
 
-touch log.txt
 sudo rm install.sh
 sudo rm pbxInstall.sh

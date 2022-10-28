@@ -1,8 +1,5 @@
 #!/bash/bin
 
-NORMAL = "\033[0;39m"
-GREEN = "\033[31m"
-
 yum -y update
 yum -y install yum-utils
 
