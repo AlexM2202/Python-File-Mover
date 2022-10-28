@@ -17,7 +17,7 @@ if answer == "a":
         os.mkdir("file"+y)
         x = x+1
     for dir in os.listdir():
-        if dir == ".git" or dir == "mover.py" or dir == "generator.py":
+        if dir == ".git" or dir == "mover.py" or dir == "generator.py" or dir == "rptree":
             continue
         if os.path.isdir(dir):
             dirs.append(dir)
