@@ -19,6 +19,10 @@ address = input(YELLOWTXT + "Please input the server url:" + RESETTXT)
 user = input(YELLOWTXT + "Please input the username:" + RESETTXT)
 secret = getpass.getpass(YELLOWTXT + "Please input the password:" + RESETTXT)
 
+# Gathering path and destionation
+src = input(YELLOWTXT + "Where is the Source:" + RESETTXT)
+dest = input(YELLOWTXT + "Where is this going to:" + RESETTXT)
+
 #setting up log file
 log = Path()
 log = log.resolve()
@@ -32,10 +36,6 @@ ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 ssh_client.connect(address, username=user, password=secret)
 ftp_client = ssh_client.open_sftp()
 
-# Gathering path and destionation
-src = input(YELLOWTXT + "Where is the Source:" + RESETTXT)
-dest = input(YELLOWTXT + "Where is this going to:" + RESETTXT)
-
 ftp_client.chdir(dest)
 
 print (GREENTXT + "start!" + RESETTXT)
@@ -44,11 +44,20 @@ p = Path(src)
 for year in p.iterdir():
     if (year.is_dir() == False):
         continue
-    ftp_client.mkdir(year.name)
+    try:
+        ftp_client.mkdir(year.name)
+    except IOError:
+        logging.info(str(year.name) + " already existed!")
     for month in year.iterdir():
-        ftp_client.mkdir(year.name + "/" + month.name)
+        try:
+            ftp_client.mkdir(year.name + "/" + month.name)
+        except IOError:
+            logging.info(str(month.name) + " already existed!")
         for day in month.iterdir():
-            ftp_client.mkdir(year.name +"/" + month.name + "/" + day.name)
+            try:
+                ftp_client.mkdir(year.name +"/" + month.name + "/" + day.name)
+            except IOError:
+                logging.info(str(day.name) + " already existed!")
             for file in day.iterdir():
                 ftp_client.put(str(day) + "/" + file.name, dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
                 logging.info(str(day) + "/" + file.name + " --> " + dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
