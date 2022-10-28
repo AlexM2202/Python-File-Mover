@@ -59,6 +59,7 @@ for year in p.iterdir():
             except IOError:
                 logging.info(str(day.name) + " already existed!")
             for file in day.iterdir():
+                print(BLUETXT + str(file) + RESETTXT)
                 ftp_client.put(str(day) + "/" + file.name, dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
                 logging.info(str(day) + "/" + file.name + " --> " + dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
                 os.remove(file)
