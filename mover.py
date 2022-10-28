@@ -65,7 +65,9 @@ for year in p.iterdir():
             day.rmdir()
         month.rmdir()
     year.rmdir()
-            
+
+print(GREENTXT + "Done!" + RESETTXT)
+  
 # Closing ftp and ssh
 
 ftp_client.close()
