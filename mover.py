@@ -62,10 +62,10 @@ for year in p.iterdir():
                 print(BLUETXT + str(file) + RESETTXT)
                 ftp_client.put(str(day) + "/" + file.name, dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
                 logging.info(str(day) + "/" + file.name + " --> " + dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
-                os.remove(file)
-            day.rmdir()
-        month.rmdir()
-    year.rmdir()
+            os.remove(file)
+        day.rmdir()
+    month.rmdir()
+year.rmdir()
 
 print(GREENTXT + "Done!" + RESETTXT)
   
