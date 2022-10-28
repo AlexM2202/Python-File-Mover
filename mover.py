@@ -64,10 +64,10 @@ for year in p.iterdir():
                 ftp_client.put(str(day) + "/" + file.name, dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
                 logging.info(str(day) + "/" + file.name + " --> " + dest + "/" + year.name + "/" + month.name + "/" + day.name + "/" + file.name)
                 counter = counter + 1
-#             os.remove(file)
-#         day.rmdir()
-#     month.rmdir()
-# year.rmdir()
+            os.remove(file)
+        day.rmdir()
+    month.rmdir()
+year.rmdir()
 
 print (str(counter) + " files were moved.")
 print(GREENTXT + "Done!" + RESETTXT)
