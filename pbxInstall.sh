@@ -21,7 +21,7 @@ echo "tqdm installed!"
 yum -y install python36u-devel
 
 touch log.txt
-
+touch inputs.txt
 echo "Alex's file mover install complete!"
 
 rm pbxInstall.sh
