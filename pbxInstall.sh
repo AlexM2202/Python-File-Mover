@@ -1,5 +1,23 @@
 #!/bash/bin
 
+touch log.txt
+touch inputs.txt
+echo "What is the address? - "
+read address
+echo $address >> inputs.txt 
+echo "What is the username? - "
+read user
+echo $user >> inputs.txt
+echo "What is the password? - "
+read pass
+echo $pass >> inputs.txt
+echo "What is the source - "
+read src 
+echo $src >> inputs.txt
+echo "What is it going? - "
+read dest 
+echo $dest >> inputs.txt
+
 yum -y update
 yum -y install yum-utils
 
@@ -20,8 +38,6 @@ echo "tqdm installed!"
 
 yum -y install python36u-devel
 
-touch log.txt
-touch inputs.txt
 echo "Alex's file mover install complete!"
 
 rm pbxInstall.sh
