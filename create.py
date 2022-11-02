@@ -1,42 +1,20 @@
 import os
-import shutil
-from tqdm import tqdm
 
-GREENTXT = '\033[32m'
-BLUETXT = '\033[036m'
-x=1
-dirs = []
-src = os.fspath(os.getcwd())
+def main():
+    global depth
+    depth = int(input("Depth:"))
+    global width
+    width = int(input("Width:"))
+    createTree(os.fspath(os.getcwd()),0)
 
-answer = input("Are we adding(a) or removing(r) - ")
-if answer == "a":
-    num = input("How many files are we making? - ")
-    num = int(num)
-    while(x<=num):
-        y = str(x)
-        os.mkdir("file"+y)
-        x = x+1
-    for dir in os.listdir():
-        if dir == ".git" or dir == "mover.py" or dir == "generator.py" or dir == "rptree":
-            continue
-        if os.path.isdir(dir):
-            dirs.append(dir)
-    for dir in tqdm(dirs):
-        currentDir = src + "/" + dir
-        os.chdir(currentDir)
-        fp = open(currentDir + "/file", 'w')
-        fp.write('this is a test file')
-        fp.close()
-        # print(BLUETXT + "file created")
+def createTree(path, curDepth):
+    for num in range(width):
+        if curDepth <= depth:
+            os.mkdir(f"{path}/Dir{num}")
+            createTree(f"{path}/Dir{num}",curDepth+1)
+        file = open(f"{path}/File","w")
+        file.write("Hello world\n")
+        file.close()
 
-if answer == "r":
-    for dir in os.listdir():
-        if dir == ".git" or dir == "mover.py" or dir == "generator.py":
-                continue
-        if os.path.isdir(dir):
-            dirs.append(dir)
-    for dir in tqdm(dirs):
-        currentDir = src + "/" + dir
-        shutil.rmtree(currentDir)
-
-print(GREENTXT + "Done!")
+if __name__ == "__main__":
+    main()
