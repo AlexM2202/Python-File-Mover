@@ -42,3 +42,4 @@ echo "Alex's file mover install complete!"
 
 rm pbxInstall.sh
 rm install.sh
+rm README.md

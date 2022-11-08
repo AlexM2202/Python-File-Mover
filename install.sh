@@ -31,3 +31,4 @@ echo "Alex's file mover setup complete!"
 
 sudo rm install.sh
 sudo rm pbxInstall.sh
+sudo rm README.md
