@@ -11,7 +11,7 @@ echo $user >> inputs.txt
 echo "What is the password? - "
 read pass
 echo $pass >> inputs.txt
-echo "What is the source - "
+echo "What is the source? - "
 read src 
 echo $src >> inputs.txt
 echo "What is it going? - "
