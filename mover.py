@@ -1,5 +1,7 @@
-# Alex Marquardt with help from Grant Duchars
-# V 1.1 10/28/2022
+#! /usr/bin/python3
+
+# Made by Alex Marquardt with help from Grant Duchars
+# V-2.1 11/18/2022
 
 # imports
 import paramiko
@@ -7,7 +9,6 @@ import os
 import getpass
 import logging
 from pathlib import Path
-# from tqdm import tqdm
 
 # Console text formatting
 YELLOWTXT = "\033[33m"
@@ -16,11 +17,11 @@ BLUETXT = "\033[036m"
 RESETTXT = "\033[39m"
 
 # Files moved counter
-
 counter = 0
 
 def main():
-    inputs = open('inputs.txt', 'r')
+    inputs_path = os.getcwd() + "/Python-File-Mover/inputs.txt"
+    inputs = open(str(inputs_path), 'r')
 
     # auto inputs from inputs.txt
     line = inputs.readline()
