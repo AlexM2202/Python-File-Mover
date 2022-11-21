@@ -24,9 +24,6 @@ echo "pip installed!"
 sudo pip install paramiko
 echo "paramiko installed!"
 
-sudo pip install tqdm
-echo "tqdm installed!"
-
 echo "Alex's file mover setup complete!"
 
 sudo rm install.sh
