@@ -8,6 +8,7 @@ import paramiko
 import os
 import getpass
 import logging
+import errno
 from pathlib import Path
 
 # Console text formatting
@@ -20,20 +21,32 @@ RESETTXT = "\033[39m"
 counter = 0
 
 def main():
-    inputs_path = os.getcwd() + "/Python-File-Mover/inputs.txt"
-    inputs = open(str(inputs_path), 'r')
+    start = Path(os.getcwd())
+    if (start.name != 'Python-File-Mover'):
+        inputs_path = os.getcwd() + "/Python-File-Mover/inputs.txt"
+    else:
+        inputs_path = os.getcwd() + "/inputs.txt"
+    try:
+        inputs = open(str(inputs_path), 'r')
 
-    # auto inputs from inputs.txt
-    line = inputs.readline()
-    address = line.strip()
-    line = inputs.readline()
-    user = line.strip()
-    line = inputs.readline()
-    secret = line.strip()
-    line = inputs.readline()
-    src = line.strip()
-    line = inputs.readline()
-    dest = line.strip()
+        # auto inputs from inputs.txt
+        line = inputs.readline()
+        address = line.strip()
+        line = inputs.readline()
+        user = line.strip()
+        line = inputs.readline()
+        secret = line.strip()
+        line = inputs.readline()
+        src = line.strip()
+        line = inputs.readline()
+        dest = line.strip()
+
+    except FileNotFoundError as e:
+        if e.errno == errno.EACCES:
+            print("file exists, but isn't readable")
+        elif e.errno == errno.ENOENT:
+            print("files isn't readable because it isn't there")
+    
 
     inputs.close()
 
