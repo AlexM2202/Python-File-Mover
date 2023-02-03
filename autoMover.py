@@ -2,7 +2,7 @@
 
 # Made by Alex Marquardt with help from Grant Duchars
 # V-2.2 2/3/2023
-# This version is for running in scripts
+# This version is for running in scripts from the imput file.
 # imports
 import paramiko
 import os
