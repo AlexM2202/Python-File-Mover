@@ -1,8 +1,6 @@
-#! /usr/bin/python3
-
 # Made by Alex Marquardt with help from Grant Duchars
-# V-2.2 2/3/2023
-# This version is for running in scripts
+# V-2.1 11/18/2022
+
 # imports
 import paramiko
 import os
@@ -25,10 +23,10 @@ def main():
     if (start.name != 'Python-File-Mover'):
         inputs_path = os.path.expanduser('~') + "/Python-File-Mover/inputs.txt"
     else:
-        inputs_path = os.getcwd() + "/inputsh.txt"
+        inputs_path = os.getcwd() + "/inputs.txt"
+    
     try:
         inputs = open(str(inputs_path), 'r')
-
     except FileNotFoundError as e:
         if e.errno == errno.EACCES:
             print("file exists, but isn't readable")
@@ -49,6 +47,8 @@ def main():
     dest = line.strip()
 
     inputs.close()
+
+    
 
     # Gathering ssh information
     # address = input(f"{YELLOWTXT}Please input the server url:{RESETTXT}")
@@ -102,15 +102,13 @@ def findAndMove(parent, remotePath):
             # Increment files moved counter
             global counter
             counter = counter + 1
-            # Remove file from original
-            os.remove(child)
+
         else:
             try:
                 ftp_client.mkdir(f"{remotePath}/{child.name}")
             except IOError:
                 logging.info(f"{child.name} alread exists")
             findAndMove(child, f"{remotePath}/{child.name}")
-            child.rmdir()
 
 if __name__ == "__main__":
     main()
