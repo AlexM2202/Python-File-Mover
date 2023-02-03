@@ -21,14 +21,43 @@ RESETTXT = "\033[39m"
 counter = 0
 
 def main():
+    start = Path(os.getcwd())
+    if (start.name != 'Python-File-Mover'):
+        inputs_path = os.path.expanduser('~') + "/Python-File-Mover/inputs.txt"
+    else:
+        inputs_path = os.getcwd() + "/inputsh.txt"
+    try:
+        inputs = open(str(inputs_path), 'r')
+
+    except FileNotFoundError as e:
+        if e.errno == errno.EACCES:
+            print("file exists, but isn't readable")
+        elif e.errno == errno.ENOENT:
+            print("files isn't readable because it isn't there")
+        return
+    
+    # auto inputs_path from inputs_path.txt
+    line = inputs.readline()
+    address = line.strip()
+    line = inputs.readline()
+    user = line.strip()
+    line = inputs.readline()
+    secret = line.strip()
+    line = inputs.readline()
+    src = line.strip()
+    line = inputs.readline()
+    dest = line.strip()
+
+    inputs.close()
+
     # Gathering ssh information
-    address = input(f"{YELLOWTXT}Please input the server url:{RESETTXT}")
-    user = input(f"{YELLOWTXT}Please input the username:{RESETTXT}")
-    secret = getpass.getpass(f"{YELLOWTXT}Please input the password:{RESETTXT}")
+    # address = input(f"{YELLOWTXT}Please input the server url:{RESETTXT}")
+    # user = input(f"{YELLOWTXT}Please input the username:{RESETTXT}")
+    # secret = getpass.getpass(f"{YELLOWTXT}Please input the password:{RESETTXT}")
 
     # Gathering path and destionation
-    src = input(f"{YELLOWTXT}Where is the Source:{RESETTXT}")
-    dest = input(f"{YELLOWTXT}Where is this going to:{RESETTXT}")
+    # src = input(f"{YELLOWTXT}Where is the Source:{RESETTXT}")
+    # dest = input(f"{YELLOWTXT}Where is this going to:{RESETTXT}")
 
     # Setting up log file
     log = Path()
@@ -74,14 +103,14 @@ def findAndMove(parent, remotePath):
             global counter
             counter = counter + 1
             # Remove file from original
-            # os.remove(child)
+            os.remove(child)
         else:
             try:
                 ftp_client.mkdir(f"{remotePath}/{child.name}")
             except IOError:
                 logging.info(f"{child.name} alread exists")
             findAndMove(child, f"{remotePath}/{child.name}")
-            # child.rmdir()
+            child.rmdir()
 
 if __name__ == "__main__":
     main()
