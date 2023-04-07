@@ -1,4 +1,8 @@
 # Made by Alex Marquardt with help from Grant Duchars
+
+# This program will copy a file tree starting from location to a NAS. Both being already set up in the input.txt file.
+# For more information or help visit the Git Hub or talk to Alex.
+ 
 # V-1.1 4/7/2023
 
 # imports

@@ -1,7 +1,12 @@
 #! /usr/bin/python3
 
 # Made by Alex Marquardt with help from Grant Duchars
-# V-2.2 2/3/2023
+
+# This program will move a file tree to a NAS. The program will prompt the user for the starting location of the move and the Log in for the NAS.
+# This program will delete and move all files under the starting location!
+# For more information or help visit the Git Hub or talk to Alex.
+
+# V-2.2 4/7/2023
 
 # imports
 import paramiko

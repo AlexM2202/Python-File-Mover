@@ -1,4 +1,5 @@
 # Made by Alex Marquardt with help from Grant Duchars
+# This program will copy a file tree from starting location that user inputs into a NAS device.
 # V-1.1 4/7/2023
 
 # imports
