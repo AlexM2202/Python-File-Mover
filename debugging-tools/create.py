@@ -17,4 +17,5 @@ def createTree(path, curDepth):
         file.close()
 
 if __name__ == "__main__":
+    os.chdir('..')
     main()
