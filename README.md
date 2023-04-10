@@ -6,10 +6,8 @@ The program scans a directory that you specify for its contents and moves them t
 
 To install all required pachages run the command "bash install.sh" or if you are on a freePBX machine run "bash pbxInstall.sh" instead.
 
-To download on your machine either run ''git clone https://github.com/AlexM2202/Python-File-Mover.git'' or download the .zip file.
+To download on your machine either run ```git clone https://github.com/AlexM2202/Python-File-Mover.git``` or download the .zip file.
 
-There is a program (create.py) that will generate a number of folders with sub files for you to test the program.
-
-The main program is call "move.py". Run it in the folder that contains the sub folders with files you wish to move.
+There are 2 versuons of the program. One is titled move and the other is Copy. Move will delete the moved files off of the hosts computer. Copy will strictly copy the files from the host computer. Both versions have an automated version called auto*.py (* is either move or copy). Both of these will use an input file that was created during install. The manual versions will prompt the user for inputs in the program.
 
 README.md will be deleated in the installer!!
