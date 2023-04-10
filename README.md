@@ -8,6 +8,6 @@ To install all required pachages run the command "bash install.sh" or if you are
 
 To download on your machine either run ```git clone https://github.com/AlexM2202/Python-File-Mover.git``` or download the .zip file.
 
-There are 2 versuons of the program. One is titled move and the other is Copy. Move will delete the moved files off of the hosts computer. Copy will strictly copy the files from the host computer. Both versions have an automated version called auto*.py (* is either move or copy). Both of these will use an input file that was created during install. The manual versions will prompt the user for inputs in the program.
+There are 2 versuons of the program. One is titled move and the other is Copy. Move will delete the moved files off of the hosts computer. Copy will strictly copy the files from the host computer. Both versions have an automated version called auto*.py (* is either move or copy). These are designed to run in a cron script. Both of these will use an input file that was created during install. The manual versions will prompt the user for inputs in the program. There are also 2 ```.sh``` files for bash running the programs.
 
 README.md will be deleated in the installer!!
